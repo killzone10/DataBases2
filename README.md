@@ -1,12 +1,14 @@
 # BD2_project
 
-#This project   contains a webapplication (fish store) with connected database  to it created in SQL_Alchemy - POSTGRES (used pgAdmin4).
+# This project   contains a webapplication (fish store) with connected database  to it created in SQL_Alchemy - POSTGRES (used pgAdmin4).
 The creation of database is being done in models.py file. 
 # How to run:
 To run you have to pip install requirments.txt and have postgres database with correcnt name on correct port.
-and also go to __init__.py and fill 2 variables:
-  - app.config['SQLALCHEMY_DATABASE_URI'] = ''  ## you have to fill that with  postgresql://login:password@name_of_database
-  - app.config['SECRET_KEY']= '' ## and add your secret key too
+and also go to __init__.py and fill 2 variables. Step by step you have to:
+  - add postgres server in pgadmin
+  - add credentials to app.config['SQLALCHEMY_DATABASE_URI'] = ''  ## you have to fill that with  postgresql://login:password@name_of_database
+  - add secret key to app.config['SECRET_KEY']= '' ## and add your secret key too
+  - after filling that just use python3 run.py 
  
 # Project goal
 ## The goal was to create a model ER, then logical model in 3NF: Third normal form, so the purpose of subject was to develop database from the scratch and connect application to it.
