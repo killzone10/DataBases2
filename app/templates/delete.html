@@ -1,0 +1,20 @@
+{%extends 'base.html' %}
+{% block head %}
+{%endblock%}
+{% block body %}
+<div class="content-section">
+  <div class="media">
+    <div class="media-body">
+
+    </div>
+  </div>
+    <form method = "POST" action ="">
+        <input type="submit" class ="submit" style="background: red; text-align: center;" value="Delete" name="Delete" />
+          
+    </form>
+    <small class="text-muted">
+      Wanna go back?  <a class="ml-2" href="{{ url_for('index') }}">Home Page</a>
+  </small>
+  </div>
+  
+{% endblock %}

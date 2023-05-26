@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block body %}
+
+    <h1 class="header"> Twój koszyk </h1>
+    {% if total_price == 0 %}
+        <h5 class="ind"> Twój koszyk jest pusty</h5>
+    {% else %}
+        {% for item in cart %}
+            <a href="/products/{{ item.id }}" style="text-decoration: none">
+                <div id="tab-wrapper">
+
+                    <div id="tab-left">
+                        <img width=150px class="product_img" src="{{ url_for('static', filename=item.photo) }}"/></div>
+                    <div id="tab-right">
+                        <tr>
+                            <br>
+                            <h3>{{ item.name }}</h3>
+                            <p>{{ item.price }} zł</p>
+                        </tr>
+                        <form method="post" action="/cart">
+                            <input type="hidden" name="hidden" value={{ item.id }}>
+                            <input type="submit" class=button2 value="Usuń" name="Remove">
+                        </form>
+                    </div>
+
+                </div>
+            </a>
+            <br>
+        {% endfor %}
+
+        <div>
+            <h5> Suma: {{'%0.2f'|format(total_price)}}</h5>
+            <form method="post" action="/cart">
+                <input type="submit" class="submit" value="Zamów" name="Buy"/>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

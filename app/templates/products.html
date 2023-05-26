@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block body %}
+    <h1 class="header"> Produkty </h1>
+    <div class="ind">
+        <form method="post" action="/products">
+            {% for product_type in product_types %}
+                <input type="submit" class=button2 value={{ product_type.title }} name="product_type"/>
+            {% endfor %}
+            <input type="submit" class=button2 value="Wszystkie" name="product_type"/>
+        </form>
+    </div>
+    <br></br>
+    {% for result in products %}
+        <a href="/products/{{ result.id }}" style="text-decoration: none">
+            <div id="tab-wrapper">
+
+                <div id="tab-left">
+                    <img width=150px class="product_img" src="{{ url_for('static', filename=result.photo) }}"/></div>
+                <div id="tab-right">
+                    <tr>
+                        <br>
+                        <h3>{{ result.name }}</h3>
+                        <h4>{{ result.price }} zł</h4>
+                        {% if result.quantity > 0 %}
+                            <p>Dostępny</p>
+                            <form method="post" action="/add_to_cart">
+                                <input type="hidden" name="hidden" value={{ result.id }}>
+                                <input type="submit" class=button2 value="Do koszyka" name="Add to cart">
+                            </form>
+                        {% else %}
+                            <p>Niedostępny</p>
+                        {% endif %}
+                    </tr>
+                </div>
+
+            </div>
+        </a>
+        <br>
+    {% endfor %}
+{% endblock %}

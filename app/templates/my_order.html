@@ -1,0 +1,19 @@
+{%extends 'base.html' %}
+{% block head %}
+{%endblock%}
+{% block body %}
+{% set price = 0 %}
+  <h1 class = "header"> Twoje zamówienia: </h1>
+  {% for item in order %}
+   <p class="text-secondary" style = " font-size: 30px;"> Zamówienie:  </p>
+  <tr>
+    {% for i in item %}
+    <p class="text-secondary"> <a href="/products/{{ i.id }}"> Nazwa: {{i.name}}  Amount: Cena: {{i.price}} </a></p>
+  </tr>
+<div class = "final">
+</div>
+<p > 
+    {% endfor %}
+{% endfor %}
+<p style="text-align:left;font-size: 30px;"> Total price is  : {{'%0.2f'|format(total_price)}} </p> 
+{% endblock %}

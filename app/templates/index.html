@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+    <div class="header">
+        <h1> Witaj w sklepie RYBEX </h1>
+        <img class="fish" src="{{ url_for('static', filename='pobrane.png') }}"/>
+    </div>
+    <div class="ind">
+        <h2 class="header"> Wybór</h2>
+        <div class="buttony">
+            {% if current_user.is_authenticated %}
+                <form method="post" action="/">
+                    <input type="submit" class=button2 value="Produkty" name="Products"/>
+                    <input type="submit" class=button2 value="Koszyk" name="Cart"/>
+                </form>
+            {% else %}
+                <form method="post" action="/">
+                    <input type="submit" class=button2 value="Zaloguj" name="Log"/>
+                    <input type="submit" class=button2 value="Zarejestruj" name="Sign"/>
+                    <input type="submit" class=button2 value="Produkty" name="Products"/>
+                </form>
+            {% endif %}
+            <!-- <form method="post" action="/">
+              <input type="submit" class ="submit" value="Log in" name="Log"  />
+              <input type="submit" class ="submit" value="Sign in" name="Sign" />
+              <input type="submit" class ="submit" value="Products" name="Products" />
+              </form> -->
+        </div>
+    </div>
+{% endblock %}

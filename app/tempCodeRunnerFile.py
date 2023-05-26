@@ -1,0 +1,1 @@
+hashed_password=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
